@@ -13,8 +13,10 @@ const BingMap = ({ pushPins }) => {
             }}
             width="500px"
             viewOptions={{
-                center: { latitude: 32.360081, longitude: 34.058884 },
-                // center: pushPins[pushPins.length - 1],
+                // center: { latitude: 32.360081, longitude: 34.058884 },
+                center: pushPins[pushPins.length - 1]
+                    ? pushPins[pushPins.length - 1].center
+                    : { latitude: 32.360081, longitude: 34.058884 },
                 mapTypeId: 'grayscale',
             }}
             pushPins={pushPins}

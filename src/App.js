@@ -11,7 +11,6 @@ const SELECTIONS = {
 }
 
 function App() {
-    const [coords, setCoords] = useState(null)
     const [type, setType] = useState(SELECTIONS.CORDS)
     const [lat, setLat] = useState(0)
     const [long, setLong] = useState(0)
