@@ -1,17 +1,9 @@
 import BingMapsReact from 'bingmaps-react'
-import { ReactBingmaps } from 'react-bingmaps'
 
-let pushPins = [
-    {
-        location: [13.0827, 80.2707],
-        option: { color: 'red' },
-        // addHandler: { type: 'click', callback: this.callBackMethod },
-    },
-]
+// let mock = [ccenter]
 
-const BingMap = () => {
-    // let center = new Microsoft.Maps.Location(47.6149, -122.1941)
-    // let pin = new Microsoft.Maps.Pushpin(center)
+const BingMap = ({ pushPins }) => {
+    console.log(`push pins: ${pushPins[pushPins.length - 1]}`)
     return (
         <BingMapsReact
             bingMapsKey="AiQjSrmnxjN41x44MYnxVgk05tmgFT5kkZhdy56cpCCCoGRv9YljboKOYnoQA6aK"
@@ -21,10 +13,11 @@ const BingMap = () => {
             }}
             width="500px"
             viewOptions={{
-                center: { latitude: 42.360081, longitude: -71.058884 },
+                center: { latitude: 32.360081, longitude: 34.058884 },
+                // center: pushPins[pushPins.length - 1],
                 mapTypeId: 'grayscale',
             }}
-            pushPins={[{ center: { latitude: 30, longitude: 30 } }]}
+            pushPins={pushPins}
         />
     )
 }

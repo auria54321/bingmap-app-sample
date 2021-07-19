@@ -15,6 +15,7 @@ function App() {
     const [type, setType] = useState(SELECTIONS.CORDS)
     const [lat, setLat] = useState(0)
     const [long, setLong] = useState(0)
+    const [pushPins, setPushPins] = useState([])
     return (
         <div className="main-container">
             <div>
@@ -40,23 +41,46 @@ function App() {
                     />
                     <label htmlFor="cords">Place</label>
                     <br />
-                    <input
-                        type="number"
-                        value={lat}
-                        onChange={(e) => setLat(e.target.value)}
-                    />{' '}
-                    <br />
-                    <input
-                        type="number"
-                        value={long}
-                        onChange={(e) => setLong(e.target.value)}
-                    />{' '}
-                    <br />
-                    <button>Submit Coords</button>
+                    {type === SELECTIONS.PLACE && 'Not Implemented Yet'}
+                    {type === SELECTIONS.CORDS && (
+                        <div>
+                            <input
+                                type="number"
+                                value={lat}
+                                onChange={(e) =>
+                                    setLat(parseFloat(e.target.value))
+                                }
+                            />{' '}
+                            <br />
+                            <input
+                                type="number"
+                                value={long}
+                                onChange={(e) =>
+                                    setLong(parseFloat(e.target.value))
+                                }
+                            />{' '}
+                            <br />
+                            <button
+                                onClick={() =>
+                                    setPushPins([
+                                        ...pushPins,
+                                        {
+                                            center: {
+                                                latitude: lat,
+                                                longitude: long,
+                                            },
+                                        },
+                                    ])
+                                }
+                            >
+                                Submit Coords
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
-            <div>
-                <BingMap lat={lat} long={long} />
+            <div className="map-container">
+                <BingMap pushPins={pushPins} />
             </div>
         </div>
     )
