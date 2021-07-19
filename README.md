@@ -1,7 +1,6 @@
 ### BINGMAP APP SAMPLE
 
-### INSTRUCTIONS
+## INSTRUCTIONS
 
-# npm i
-
-# npm start
+-   npm i
+-   npm start
